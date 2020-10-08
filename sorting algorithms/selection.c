@@ -1,36 +1,31 @@
 #include<stdio.h>
-
-void swap(int * a, int *b)
+void selection(int* a,int n)
 {
-	int temp = *a;
-	*a = *b;
-	*b = temp;
+    for(int i=0;i<n;i++)
+    {
+        int m=0;
+        int j;
+        for(j=0;j<n-1-i;j++)
+        {
+            if(a[j]>a[m])
+            {
+                m=j;
+            }
+        }
+        if(a[j]<a[m])
+        {
+            int temp=a[j];
+            a[j]=a[m];
+            a[m]=temp;
+        }
+    }
 }
-
-void selection(int a[], int n)
-{
-	int i,j,m;
-	for(i=0; i<n-1; i++)
-	{
-		m=0;
-		for(j=1; j<n-1-i; j++)
-		{
-			if(a[j]> a[m])
-				m=j;
-		}
-		if(a[m]>a[j])
-			swap(&a[m], &a[j]);
-	}
-}
-
 int main()
 {
-	int a[100];
-	for(int i=0; i<4; i++)
-	{
-		scanf("%d", &a[i]);
-	}
-	selection(a, 5);
-	for(int i=0; i<4; i++)
-		printf("%d ", a[i]);
+    int arr[]={243,1,23,213};
+    selection(arr,4);
+    for(int i=0;i<4;i++)
+    {
+        printf("%d ",arr[i]);
+    }
 }
